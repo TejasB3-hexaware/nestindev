@@ -29,6 +29,9 @@ public class Teacher {
 	@Id
 	private Long id;
     private String name;
+	public Teacher(){
+   
+        }
 
 	public Teacher(Long id, 
         String name
