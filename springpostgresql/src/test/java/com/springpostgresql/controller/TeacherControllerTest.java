@@ -27,8 +27,8 @@ public class TeacherControllerTest {
 	
 	private List<Teacher> prepareTeacherRecords(){
 		List<Teacher> teacherList = new ArrayList<Teacher>();
-		Teacher teacher1 = new Teacher(345345, "2ezq9",86);
-		Teacher teacher2 = new Teacher(345344, "MTT71",69);
+		Teacher teacher1 = new Teacher(345345L, "2ezq9",86);
+		Teacher teacher2 = new Teacher(345344L, "MTT71",69);
 		teacherList.add(teacher1);
 		teacherList.add(teacher2);
 		return teacherList;
@@ -60,11 +60,11 @@ public class TeacherControllerTest {
 	
 	 @Test public void fetchByIdPass() { 
 		 Mockito
-	        .when(controller.fetchById(345344))
+	        .when(controller.fetchById(345344L))
             .thenReturn(prepareTeacherRecords().get(0));
 
         Teacher teacherById = prepareTeacherRecords().get(0);
-        Teacher teacherByIdFromController = controller.fetchById(345345);
+        Teacher teacherByIdFromController = controller.fetchById(345345L);
         
         Assertions.assertEquals(teacherById.getId(), teacherByIdFromController.getId());
         Assertions.assertEquals(teacherById.getName(), teacherByIdFromController.getName());
@@ -74,11 +74,11 @@ public class TeacherControllerTest {
 
 	 @Test public void fetchByIdFailure() { 
 		Mockito
-	        .when(controller.fetchById(345344))
+	        .when(controller.fetchById(345344L))
             .thenReturn(prepareTeacherRecords().get(0));
 
         Teacher teacherById = prepareTeacherRecords().get(1);
-        Teacher teacherByIdFromController = controller.fetchById(345345);
+        Teacher teacherByIdFromController = controller.fetchById(345345L);
         
         Assertions.assertNotEquals(teacherById.getId(), teacherByIdFromController.getId());
         Assertions.assertNotEquals(teacherById.getName(), teacherByIdFromController.getName());
@@ -88,7 +88,7 @@ public class TeacherControllerTest {
 	 
 	 @Test
 	 public void deletePass() { 
-		 controller.delete(345345);
+		 controller.delete(345345L);
 		 Assertions.assertTrue(true); // This line will be executed only if there is no error in calling the controller for delete as there is no return value.
 	 }
 
@@ -96,7 +96,7 @@ public class TeacherControllerTest {
 	public void createPass() {
 		Teacher teacherToBeCreated 			= prepareTeacherRecords().get(0);
 		Teacher teacherReturned = prepareTeacherRecords().get(0);
-		teacherReturned.setId(345348); //Changed the ID.
+		teacherReturned.setId(345348L); //Changed the ID.
 		
 		Mockito
 			.when(controller.create(teacherToBeCreated))
