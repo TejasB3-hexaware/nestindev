@@ -64,7 +64,7 @@ public class TeacherControllerTest {
             .thenReturn(prepareTeacherRecords().get(0));
 
         Teacher teacherById = prepareTeacherRecords().get(0);
-        Teacher teacherByIdFromController = controller.fetchById(345345L);
+        Teacher teacherByIdFromController = controller.fetchById(345344L);
         
         Assertions.assertEquals(teacherById.getId(), teacherByIdFromController.getId());
         Assertions.assertEquals(teacherById.getName(), teacherByIdFromController.getName());
@@ -78,7 +78,7 @@ public class TeacherControllerTest {
             .thenReturn(prepareTeacherRecords().get(0));
 
         Teacher teacherById = prepareTeacherRecords().get(1);
-        Teacher teacherByIdFromController = controller.fetchById(345345L);
+        Teacher teacherByIdFromController = controller.fetchById(345344L);
         
         Assertions.assertNotEquals(teacherById.getId(), teacherByIdFromController.getId());
         Assertions.assertNotEquals(teacherById.getName(), teacherByIdFromController.getName());
