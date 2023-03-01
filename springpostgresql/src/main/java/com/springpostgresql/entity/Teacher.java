@@ -28,11 +28,13 @@ public class Teacher {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-    @NotBlank
+    
     private String name;
-    @NotBlank
+    
     private int age;
 
+	public Teacher(){}
+	
 	public Teacher(Long id, 
         String name, 
         int age
