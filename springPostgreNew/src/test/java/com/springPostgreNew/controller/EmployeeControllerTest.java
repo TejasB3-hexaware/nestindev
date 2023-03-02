@@ -27,8 +27,8 @@ public class EmployeeControllerTest {
 	
 	private List<Employee> prepareEmployeeRecords(){
 		List<Employee> employeeList = new ArrayList<Employee>();
-		Employee employee1 = new Employee(345345, "pbQa2","0MWHL");
-		Employee employee2 = new Employee(345344, "RX4bx","Ml2Uf");
+		Employee employee1 = new Employee(345345L, "pbQa2","0MWHL");
+		Employee employee2 = new Employee(345344L, "RX4bx","Ml2Uf");
 		employeeList.add(employee1);
 		employeeList.add(employee2);
 		return employeeList;
@@ -60,11 +60,11 @@ public class EmployeeControllerTest {
 	
 	 @Test public void fetchByIdPass() { 
 		 Mockito
-	        .when(controller.fetchById(345344))
+	        .when(controller.fetchById(345344L))
             .thenReturn(prepareEmployeeRecords().get(0));
 
         Employee employeeById = prepareEmployeeRecords().get(0);
-        Employee employeeByIdFromController = controller.fetchById(345345);
+        Employee employeeByIdFromController = controller.fetchById(345344L);
         
         Assertions.assertEquals(employeeById.getId(), employeeByIdFromController.getId());
         Assertions.assertEquals(employeeById.getName(), employeeByIdFromController.getName());
@@ -74,11 +74,11 @@ public class EmployeeControllerTest {
 
 	 @Test public void fetchByIdFailure() { 
 		Mockito
-	        .when(controller.fetchById(345344))
+	        .when(controller.fetchById(345344L))
             .thenReturn(prepareEmployeeRecords().get(0));
 
         Employee employeeById = prepareEmployeeRecords().get(1);
-        Employee employeeByIdFromController = controller.fetchById(345345);
+        Employee employeeByIdFromController = controller.fetchById(345344L);
         
         Assertions.assertNotEquals(employeeById.getId(), employeeByIdFromController.getId());
         Assertions.assertNotEquals(employeeById.getName(), employeeByIdFromController.getName());
@@ -88,7 +88,7 @@ public class EmployeeControllerTest {
 	 
 	 @Test
 	 public void deletePass() { 
-		 controller.delete(345345);
+		 controller.delete(345345L);
 		 Assertions.assertTrue(true); // This line will be executed only if there is no error in calling the controller for delete as there is no return value.
 	 }
 
@@ -96,7 +96,7 @@ public class EmployeeControllerTest {
 	public void createPass() {
 		Employee employeeToBeCreated 			= prepareEmployeeRecords().get(0);
 		Employee employeeReturned = prepareEmployeeRecords().get(0);
-		employeeReturned.setId(345348); //Changed the ID.
+		employeeReturned.setId(345348L); //Changed the ID.
 		
 		Mockito
 			.when(controller.create(employeeToBeCreated))
