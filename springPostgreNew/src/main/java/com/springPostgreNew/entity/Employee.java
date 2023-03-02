@@ -28,10 +28,12 @@ public class Employee {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-    @NotBlank
+   
     private String name;
-    @NotBlank
+    
     private String age;
+
+    public Employee(){}
 
 	public Employee(Long id, 
         String name, 
